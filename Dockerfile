@@ -3,7 +3,8 @@ FROM php:7.4-apache
 LABEL mantainer "TikiWiki <tikiwiki-devel@lists.sourceforge.net>"
 LABEL PHP_VERSION=7.4.19
 
-RUN apt-get update \
+RUN a2enmod rewrite expires \
+    && apt-get update \
     && apt-get install -y \
         libfreetype6-dev \
         libicu-dev \
