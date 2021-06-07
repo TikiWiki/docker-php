@@ -1,7 +1,7 @@
 FROM php:7-fpm
 
 LABEL mantainer "TikiWiki <tikiwiki-devel@lists.sourceforge.net>"
-LABEL PHP_VERSION=7.4.19
+LABEL PHP_VERSION=7.4.20
 
 RUN apt-get update \
     && apt-get install -y \
@@ -20,7 +20,7 @@ RUN apt-get update \
     && ln -s /usr/lib/x86_64-linux-gnu/liblber.so /usr/lib/liblber.so \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install bcmath calendar gd intl ldap mysqli mbstring pdo_mysql zip \
-    && printf "yes\n" | pecl install xdebug \
+    && printf "yes\n" | pecl install xdebug-2.9.8 \
     && printf "no\n"  | pecl install apcu-beta \
     && printf "no\n"  | pecl install memcached \
     && echo 'extension=apcu.so' > /usr/local/etc/php/conf.d/pecl-apcu.ini \
